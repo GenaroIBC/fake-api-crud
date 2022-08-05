@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "name": "parrafo doble",
+      "age": "23000",
+      "id": 1
+    },
+    {
+      "name": "Esteban doble tambien",
+      "age": "200",
+      "id": 2
+    },
+    {
+      "name": "nuevo usuario",
+      "age": "0",
+      "id": 3
+    }
+  ]
+}

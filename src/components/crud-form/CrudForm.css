@@ -1,0 +1,13 @@
+form {
+  margin: auto;
+  max-width: 800px;
+  background-color: #0e0e4f;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  text-align: center;
+}
+
+label {
+  margin: 1.8rem 0 0.8rem;
+}

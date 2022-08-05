@@ -12,6 +12,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "jserver": "json-server -w src/assets/data.json -p 5555",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

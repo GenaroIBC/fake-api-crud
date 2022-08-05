@@ -1,17 +1,38 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import { App } from "./App.jsx";
+const JSONData = {
+  users: [
+    {
+      name: "Aaron Piper",
+      age: 19,
+      hobbies: ["singing", "swimming"],
+      id: 1,
+    },
+    {
+      name: "Esteban Quito",
+      age: 24,
+      hobbies: ["walking", "play video-games"],
+      id: 2,
+    },
+    {
+      name: "Sherlock Holmes",
+      age: 39,
+      hobbies: ["investigate", "boxing"],
+      id: 3,
+    },
+    {
+      name: "Jon Mircha",
+      age: 34,
+      hobbies: ["coding", "running", "trainning"],
+      id: 4,
+    },
+  ],
+};
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <App JSONData={JSONData.users} />
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
