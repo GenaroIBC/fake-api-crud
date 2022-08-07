@@ -14,7 +14,7 @@ This will install the necesary dependencies to run the fake CRUD API.
 npm run jserver
 ```
 
-This will init [JSON Server](https://json-server.com). It is running, by default, at port `5555`. If you are using that port, just modify the _`-p`_ parameter with the port of your preference at **_package.json_**.
+This will init [JSON Server](https://github.com/typicode/json-server). It is running, by default, at port `5555`. If you are using that port, just modify the _`-p`_ parameter with the port of your preference at **_package.json_**.
 
 ### Finaly, run:
 
@@ -22,4 +22,4 @@ This will init [JSON Server](https://json-server.com). It is running, by default
 npm start
 ```
 
-Now, you can **open your browser** at [`http://localhost:3000`]() to start using the fake CRUD API.
+Now, you can **open your browser** at [http://localhost:3000](http://localhost:3000) to start using the fake CRUD API.
