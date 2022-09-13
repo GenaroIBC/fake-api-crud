@@ -1,6 +1,5 @@
 import "./CrudForm.css";
 export function CrudForm({ handleSubmit, formData, handleChange }) {
-  console.log(formData);
   return (
     <form
       onSubmit={e => {
