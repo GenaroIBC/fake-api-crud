@@ -1,19 +1,9 @@
 {
   "users": [
     {
-      "name": "Jhon Doe",
-      "age": "34",
+      "name": "Esteban Quito",
+      "age": "666666666",
       "id": 1
-    },
-    {
-      "name": "Rambo",
-      "age": "200",
-      "id": 2
-    },
-    {
-      "name": "New user",
-      "age": "0",
-      "id": 3
     }
   ]
 }

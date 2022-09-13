@@ -1,13 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import { Card } from "./components/card/Card";
 import { CrudForm } from "./components/crud-form/CrudForm";
 import { fetchRequest } from "./assets/helpers/fetchRequest";
 import "./App.css";
+import { crudInitialState, crudReducer } from "./reducers/crudReducer";
+import { TYPES } from "./actions/crudActions";
 
 const URL = "http://localhost:5555/users";
 
 export function App() {
-  const [usersData, setUsersData] = useState(null);
+  const [crudState, crudDispatch] = useReducer(crudReducer, crudInitialState);
+
+  // const [usersData, setUsersData] = useState(null);
   const [dataToSend, setDataToSend] = useState(null);
   const [dataToEdit, setDataToEdit] = useState({});
 
@@ -15,7 +19,7 @@ export function App() {
     // GET
     const getData = async () => {
       const data = await fetchRequest({ url: URL });
-      setUsersData(data);
+      crudDispatch({ type: TYPES.GET_ALL_DATA, payload: data });
     };
     getData();
   }, []);
@@ -50,10 +54,8 @@ export function App() {
         body: JSON.stringify(dataToEdit),
       });
 
-      const updatedData = usersData.map(el =>
-        el.id !== dataToEdit.id ? el : dataToEdit
-      );
-      setUsersData(updatedData);
+      // setUsersData(updatedData);
+      crudDispatch({ type: TYPES.UPDATE_ONE, payload: dataToEdit });
       setDataToEdit({});
     } else {
       // POST
@@ -64,7 +66,8 @@ export function App() {
       });
 
       // task: replace newData below with dataToSend and delete that constant
-      setUsersData(prevData => [...prevData, newData]);
+      // setUsersData(prevData => [...prevData, newData]);
+      crudDispatch({ type: TYPES.CREATE_ONE, payload: newData });
     }
   };
 
@@ -74,11 +77,12 @@ export function App() {
       url: `${URL}/${id}`,
       method: "DELETE",
     });
-    setUsersData(prevData => prevData.filter(el => el.id !== id));
+    crudDispatch({ type: TYPES.DELETE_ONE, payload: id });
+    // setUsersData(prevData => prevData.filter(el => el.id !== id));
   };
 
   const handleEdit = id => {
-    setDataToEdit(usersData.find(el => el.id === id));
+    setDataToEdit(crudState.users.find(el => el.id === id));
   };
 
   const userIsEditing = Object.keys(dataToEdit).length;
@@ -95,13 +99,13 @@ export function App() {
         <CrudForm
           handleChange={handleChange}
           handleSubmit={handleSubmit}
-          formData={dataToEdit}
+          formData={crudState.users}
         />
       </section>
       <br />
       <section className="users-data-container">
-        {usersData
-          ? usersData.map(({ age, id, name }) => (
+        {crudState.users
+          ? crudState.users.map(({ age, id, name }) => (
               <Card
                 handleEdit={handleEdit}
                 handleDelete={handleDelete}
